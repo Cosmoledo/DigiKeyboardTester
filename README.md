@@ -90,6 +90,16 @@ void setup() {
   }
 }
 
+void test(char name[], const uint16_t language[]) {
+  for (byte i = 0; i < 96; i++)
+    keycodes_ascii[i] = pgm_read_byte_near(language + i);
+  
+  DigiKeyboard.print(name);
+  for (byte i = 0; i < strlen_P(TEST_STRING); i++)
+    DigiKeyboard.print((char) pgm_read_byte_near(TEST_STRING + i));
+  DigiKeyboard.println();
+}
+
 .
 .
 .
@@ -99,7 +109,9 @@ The key codes were imported, parsed and converted to the correct values, they go
 
 TEST_STRING contains all ASCII-Letters to test a language on.
 
-As hint [1](#1) said, the tests get separated to save storage. So you could test PART 1, then increase the counter and upload again. Really easy.
+As hint [1](#1) said, the tests get separated to save storage (the switch-Statement). So you could test PART 1, then increase the counter and upload again. Really easy.
+
+The test-Function takes the key codes, puts them into *keycodes_ascii* and prints the language name and the letters.
 
 ## Customization
 
