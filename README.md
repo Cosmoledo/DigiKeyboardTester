@@ -23,7 +23,7 @@ to
 
 `KEYCODE_TYPE keycodes_ascii[]`
 
-Because it's now not longer stored in PROGMEM, the access to this variable has changed, so go into *DigiKeyboard.h* and change these line in the write-Function:
+Because it's now not longer stored in PROGMEM, the access to this variable has changed, so go into *DigiKeyboard.h* and change this line in the write-Function:
 
 `data = pgm_read_byte_near(keycodes_ascii + (chr - 0x20));`
 
@@ -35,11 +35,11 @@ The given test/test.ino should compile without problems.
 
 Because of these changes `DigiKeyboard.print` and `DigiKeyboard.println` do not longer work with strings only char-Arrays are accepted. It's strange but otherwise only a blank line gets printed.
 
-You can now test your key codes and see where problems might be. Just do some modifications in the *keylayout.h*. Run the program and upload. So you don't have to copy anything to `\AppData\Local\Arduino15\packages\digistump\hardware\avr\1.7.0\libraries\DigisparkKeyboard\` or something like that.
+You can now test your key codes and see where problems might be. Just do some modifications in the *keylayout.h*, run the program and upload. So you don't have to copy anything to `\AppData\Local\Arduino15\packages\digistump\hardware\avr\1.7.0\libraries\DigisparkKeyboard\` or something like that.
 
 The Arduino IDE does not support hot reload of files, so you have to close the opened one and reopen the new file, better use Platform IO here.
 
-Hint: Don't forget to revert the file changes before releasing anything.
+When finished correcting a language, just take the new *keylayout.h*, revert all *keycodes_ascii*-changes and you can releasing it.
 
 ## Working example
 
