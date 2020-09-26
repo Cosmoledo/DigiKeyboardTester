@@ -1,0 +1,17 @@
+{
+  "author": "Cosmoledo",
+  "bin": "index.js",
+  "dependencies": {
+    "strip-comments": "^2.0.1"
+  },
+  "description": "Generates a file to test all languages with DigiKeyboard",
+  "license": "ISC",
+  "main": "index.js",
+  "name": "DigiKeyboardTester",
+  "scripts": {
+    "build": "pkg . -t node8-win",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "version": "1.0.0"
+}
