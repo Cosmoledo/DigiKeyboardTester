@@ -1,11 +1,11 @@
 # DigiKeyboardTester
 
-The USB Development Board based on a Attiny85 from [Digispark](http://digistump.com/products/1) can act as a Keyboard.
-The default library by [Digispark](https://github.com/digistump/DigistumpArduino) only supports the English Keyboard Layout but some engineers forked there work and managed to create switchable layouts.
+The USB Development Board based on an Attiny85 from [Digispark](http://digistump.com/products/1) can act as a Keyboard.
+The default library by [Digispark](https://github.com/digistump/DigistumpArduino) only supports the English Keyboard Layout but some engineers forked their work and managed to create switchable layouts.
 
 This project takes the *keylayout.h* file and generates a test.ino. With that you can test many layouts at once, without flashing again<sup>[1](#1)</sup>. So if you are one of these cool engineers, you can test and modify your *keylayout.h* faster and easier.
 
-This project was developed with [Node.JS](https://nodejs.org/en/). If you don't have it, there is also an EXE. If you want to modify the programs behaviour, you need Node.JS though. Just place *keylayout.h* next to it and it will generate a working test.ino in the folder test. Attention: It will replace an existing one.
+This project was developed with [Node.JS](https://nodejs.org/en/). If you don't have it, there is also an EXE. If you want to modify its behavior, you need Node.JS though. Just place *keylayout.h* next to it and it will generate a working test.ino in the folder test. Attention: It will replace an existing one.
 
 This program does not support chars with ISO_8859_1, because many libraries do not support it either.
 
@@ -23,7 +23,7 @@ to
 
 `KEYCODE_TYPE keycodes_ascii[]`
 
-Because it's now not longer stored in PROGMEM, the access to this variables has changed, so go into *DigiKeyboard.h* and change these line in the write-Function:
+Because it's now not longer stored in PROGMEM, the access to this variable has changed, so go into *DigiKeyboard.h* and change these line in the write-Function:
 
 `data = pgm_read_byte_near(keycodes_ascii + (chr - 0x20));`
 
@@ -33,9 +33,9 @@ to
 
 The given test/test.ino should compile without problems.
 
-Because of these changes `DigiKeyboard.print` and `DigiKeyboard.println` do not longer work with Strings only char-Arrays are accepted. It's strange but otherwise only a blank line gets printed.
+Because of these changes `DigiKeyboard.print` and `DigiKeyboard.println` do not longer work with strings only char-Arrays are accepted. It's strange but otherwise only a blank line gets printed.
 
-You can now test your keycode and see where problems might be. Just do some modifications in the *keylayout.h*. Run the program and upload. So you don't have to copy anything to `\AppData\Local\Arduino15\packages\digistump\hardware\avr\1.7.0\libraries\DigisparkKeyboard\` or something like that.
+You can now test your key codes and see where problems might be. Just do some modifications in the *keylayout.h*. Run the program and upload. So you don't have to copy anything to `\AppData\Local\Arduino15\packages\digistump\hardware\avr\1.7.0\libraries\DigisparkKeyboard\` or something like that.
 
 The Arduino IDE does not support hot reload of files, so you have to close the opened one and reopen the new file, better use Platform IO here.
 
@@ -70,7 +70,7 @@ Hint: Don't forget to revert the file changes before releasing anything.
 #endif
 ```
 
-As you can see there are keycode which work for any layout. The layout US_INTERNATIONAL uses them. After my programs magic the test.ino would look like this:
+As you can see there are key codes which work for any layout. The layout US_INTERNATIONAL uses them. After my programs magic the test.ino would look like this:
 
 ```C
 #include "DigiKeyboard.h"
@@ -95,16 +95,16 @@ void setup() {
 .
 ```
 
-The keycodes were imported, parsed and converted to the correct values, they got placed into the US_INTERNATIONAL-Array. This would happen for each language.
+The key codes were imported, parsed and converted to the correct values, they got placed into the US_INTERNATIONAL-Array. This would happen for each language.
 
 TEST_STRING contains all ASCII-Letters to test a language on.
 
-As hint [1](#1) said the tests get separated to save storage. So you could test PART 1, then increase the counter and upload again. Really easy.
+As hint [1](#1) said, the tests get separated to save storage. So you could test PART 1, then increase the counter and upload again. Really easy.
 
 ## Customization
 
-To customize the behaviour you need to install Node.JS.
+To customize the behavior you need to install Node.JS.
 
 You can change how many tests are allowed in one case-Statement, search for `maxGroupSize`.
 
-You could also change the test-string. Don't forget, it has to be double escapped, one time for Javascript and one for C, search for `TEST_STRING`.
+You could also change the test-string. Don't forget, it has to be double escaped, one time for JavaScript and one for C, search for `TEST_STRING`.
