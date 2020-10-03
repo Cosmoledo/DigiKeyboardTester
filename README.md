@@ -39,7 +39,7 @@ You can now test your key codes and see where problems might be. Just do some mo
 
 The Arduino IDE does not support hot reload of files, so you have to close the opened one and reopen the new file, better use Platform IO here.
 
-When finished correcting a language, just take the new *keylayout.h*, revert all *keycodes_ascii*-changes and you can releasing it.
+When finished correcting a language, just take the new *keylayout.h*, revert all *keycodes_ascii*-changes and you can release it.
 
 ## Working example
 
