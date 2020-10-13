@@ -13,7 +13,7 @@ This program does not support chars with ISO_8859_1, because many libraries do n
 
 ## Preparation
 
-Copy your existing *keylayout.h* file into this project folder. You could also take my, which is taken from the library by [ArminJo](https://github.com/ArminJo/DigistumpArduino).
+Copy your existing *keylayout.h* file into this project folder. You could take mine too, which is taken from the library by [ArminJo](https://github.com/ArminJo/DigistumpArduino).
 
 In order to change the layout at runtime, it needs access to *keycodes_ascii* located at the end of *keylayout.h*. So please change it from:
 
